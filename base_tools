@@ -1,22 +1,22 @@
 #---------------------------------------------------------------------------------
-# change shell on Snow Leopard
+# make sure we have bash on OSX
 #---------------------------------------------------------------------------------
 UNAME_S	:=	$(shell uname -s)
-UNAME_R	:=	$(shell uname -r)
 
 ifneq (,$(findstring Darwin,$(UNAME_S)))
-	ifneq (,$(findstring 10.8.0,$(UNAME_R)))
-		export SHELL=/bin/bash
-	endif
+	export SHELL=/bin/bash
 endif
 
 #---------------------------------------------------------------------------------
 # path to tools
 #---------------------------------------------------------------------------------
 DEVKITPATH=$(shell echo "$(DEVKITPRO)" | sed -e 's/^\([a-zA-Z]\):/\/\1/')
+export PATH	:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PATH)
 
-export PORTLIBS	:=	$(DEVKITPATH)/portlibs/ppc
-export PATH	:=	$(DEVKITPATH)/tools/bin:$(DEVKITPATH)/devkitPPC/bin:$(PORTLIBS)/bin:$(PATH)
+#---------------------------------------------------------------------------------
+# add portlibs path
+#---------------------------------------------------------------------------------
+export PORTLIBS_PATH	:=	$(DEVKITPRO)/portlibs
 
 #---------------------------------------------------------------------------------
 # the prefix on the compiler executables
@@ -26,9 +26,11 @@ PREFIX	:=	powerpc-eabi-
 export AS	:=	$(PREFIX)as
 export CC	:=	$(PREFIX)gcc
 export CXX	:=	$(PREFIX)g++
-export AR	:=	$(PREFIX)ar
+export AR	:=	$(PREFIX)gcc-ar
 export OBJCOPY	:=	$(PREFIX)objcopy
-
+export STRIP	:=	$(PREFIX)strip
+export NM	:=	$(PREFIX)gcc-nm
+export RANLIB	:=	$(PREFIX)gcc-ranlib
 
 ISVC=$(or $(VCBUILDHELPER_COMMAND),$(MSBUILDEXTENSIONSPATH32),$(MSBUILDEXTENSIONSPATH))
 
