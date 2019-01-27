@@ -2,6 +2,8 @@ ifeq ($(strip $(DEVKITPPC)),)
 $(error "Please set DEVKITPPC in your environment. export DEVKITPPC=<path to>devkitPro/devkitPPC)
 endif
 
+PORTLIBS	:=	$(PORTLIBS_PATH)/gamecube $(PORTLIBS_PATH)/ppc
+
 export	LIBOGC_INC	:=	$(DEVKITPRO)/libogc/include
 export	LIBOGC_LIB	:=	$(DEVKITPRO)/libogc/lib/cube
 
