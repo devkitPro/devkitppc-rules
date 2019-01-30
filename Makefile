@@ -8,7 +8,7 @@ all:
 	@echo "use dist or install targets"
 
 install:
-	@cp -v $(FILES) $(DESTDIR)/opt/devkitPro/devkitPPC
+	@cp -v $(FILES) $(DESTDIR)/opt/devkitpro/devkitPPC
 
 dist:
-	@tar -cJf devkitppc-rules-$(_MAJOR).$(_MINOR).$(_PATCH).tar.xz $(FILES)
+	@tar -cJf devkitppc-rules-$(_MAJOR).$(_MINOR).$(_PATCH).tar.xz $(FILES) Makefile
