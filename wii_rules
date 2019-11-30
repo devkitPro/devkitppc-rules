@@ -16,15 +16,15 @@ MACHDEP =  -DGEKKO -mrvl -mcpu=750 -meabi -mhard-float
 
 #---------------------------------------------------------------------------------
 %.dol: %.elf
-	@echo output ... $(notdir $@)
-	@elf2dol $< $@
+	$(SILENTMSG) output ... $(notdir $@)
+	$(SILENTCMD)elf2dol $< $@
 
 #---------------------------------------------------------------------------------
 %.tpl : %.scf
-	@echo $(notdir $<)
-	@gxtexconv -s $< -d $(DEPSDIR)/$*.d -o $@
+	$(SILENTMSG) $(notdir $<)
+	$(SILENTCMD)gxtexconv -s $< -d $(DEPSDIR)/$*.d -o $@
 
 #---------------------------------------------------------------------------------
 %.elf:
-	@echo linking ... $(notdir $@)
-	@$(LD)  $^ $(LDFLAGS) $(LIBPATHS) $(LIBS) -o $@
+	$(SILENTMSG) linking ... $(notdir $@)
+	$(SILENTCMD)$(LD)  $^ $(LDFLAGS) $(LIBPATHS) $(LIBS) -o $@
