@@ -1,6 +1,6 @@
 _MAJOR	:= 1
-_MINOR	:= 1
-_PATCH	:= 2
+_MINOR	:= 2
+_PATCH	:= 0
 
 FILES	:=	base_rules base_tools gamecube_rules wii_rules
 
