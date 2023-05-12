@@ -27,4 +27,5 @@ MACHDEP =  -DGEKKO -mogc -mcpu=750 -meabi -mhard-float
 #---------------------------------------------------------------------------------
 %.elf:
 	$(SILENTMSG) linking ... $(notdir $@)
+	$(ADD_COMPILE_COMMAND) end
 	$(SILENTCMD)$(LD)  $^ $(LDFLAGS) $(LIBPATHS) $(LIBS) -o $@
