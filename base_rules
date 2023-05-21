@@ -37,11 +37,3 @@ include $(DEVKITPPC)/base_tools
 	$(SILENTMSG) $(notdir $<)
 	$(ADD_COMPILE_COMMAND) add $(CC) "$(CPPFLAGS) $(ASFLAGS) -c $< -o $@" $<
 	$(SILENTCMD)$(CC) -MMD -MP -MF $(DEPSDIR)/$*.d -x assembler-with-cpp $(CPPFLAGS) $(ASFLAGS) -c $< -o $@ $(ERROR_FILTER)
-
-#---------------------------------------------------------------------------------
-# canned command sequence for binary data
-#---------------------------------------------------------------------------------
-define bin2o
-	$(SILENTCMD)bin2s -a 32 -H `(echo $(<F) | tr . _)`.h $< | $(AS) -o $(<F).o
-endef
-

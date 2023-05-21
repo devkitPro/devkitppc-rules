@@ -50,6 +50,16 @@ else
 endif
 
 #---------------------------------------------------------------------------------
+# canned command sequence for binary data
+#---------------------------------------------------------------------------------
+define bin2o
+        $(eval _tmpasm := $(shell mktemp))
+        $(SILENTCMD)bin2s -a 32 -H `(echo $(<F) | tr . _)`.h $< > $(_tmpasm)
+        $(SILENTCMD)$(CC) -x assembler-with-cpp $(CPPFLAGS) $(ASFLAGS) -c $(_tmpasm) -o $(<F).o
+        @rm $(_tmpasm)
+endef
+
+#---------------------------------------------------------------------------------
 # Generate compile commands
 #---------------------------------------------------------------------------------
 ifeq ($(GENERATE_COMPILE_COMMANDS),1)
