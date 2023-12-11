@@ -63,7 +63,7 @@ endef
 # Generate compile commands
 #---------------------------------------------------------------------------------
 ifeq ($(GENERATE_COMPILE_COMMANDS),1)
-    ADD_COMPILE_COMMAND := @/opt/devkitpro/tools/bin/generate_compile_commands
+    ADD_COMPILE_COMMAND := @generate_compile_commands
 else
     ADD_COMPILE_COMMAND := @true
 endif
